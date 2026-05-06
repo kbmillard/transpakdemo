@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { PrintFullSheetButton } from "@/components/transpak/PrintFullSheetButton";
 import { assetRecords, customerPortalRecords, demoJobs, shipmentRecords } from "@/lib/transpak-demo-seed";
 import { QrCodeCard } from "@/components/transpak/QrCodeCard";
 import { QrCodeGrid } from "@/components/transpak/QrCodeGrid";
@@ -22,9 +23,12 @@ export default function QrDemoSheetPage() {
               <p className="text-lg font-bold">QR Demo Sheet</p>
             </div>
           </div>
-          <Link href="/" className="text-sm font-semibold text-[#D80B3C] print:hidden">
-            ← Home
-          </Link>
+          <div className="flex flex-wrap items-center gap-3 print:hidden">
+            <PrintFullSheetButton />
+            <Link href="/" className="text-sm font-semibold text-[#D80B3C]">
+              ← Home
+            </Link>
+          </div>
         </div>
       </header>
 
@@ -37,6 +41,12 @@ export default function QrDemoSheetPage() {
           <p className="mt-3 text-sm text-[#19212A]/70">
             This demo uses real public lead examples, realistic TransPak-style job records, and functional QR codes to show how
             the system would work once connected to approved internal data.
+          </p>
+          <p className="mt-4 rounded-lg border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-[#19212A]/85 print:hidden">
+            <strong className="text-[#19212A]">Where to print:</strong> Each job, asset, and shipment record in the app includes
+            the same QR with a <strong>Print label</strong> button — use that for a single sticker. This page is optional: use it
+            when you want every demo QR in one place, <strong>Print label</strong> per card, or <strong>Print full sheet</strong>{" "}
+            for the entire page.
           </p>
         </div>
 

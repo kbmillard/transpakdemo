@@ -22,6 +22,7 @@ import {
 import { StatusChip } from "./StatusChip";
 import { DemoBadge } from "./DemoBadge";
 import { ClearDemoUpdatesButton } from "./ClearDemoUpdatesButton";
+import { CommandCenterGuidedDemo } from "./CommandCenterGuidedDemo";
 
 const LEAD_FILTERS = [
   "All",
@@ -146,17 +147,11 @@ export function CommandCenterView() {
             Live demo workspace for public-fit leads, quote intake, active jobs, shipment risks, documents, field updates,
             and customer-ready communication.
           </p>
-          <p className="mt-2 text-xs text-slate-500">
-            Demo data uses public lead examples and realistic workflow records. Production would connect only to approved
-            internal systems.
-          </p>
-          <p className="mt-2 text-xs text-slate-500">
-            This demo uses real public lead examples, realistic TransPak-style job records, and functional QR codes to show
-            how the system would work once connected to approved internal data.
-          </p>
         </div>
 
-        <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-8">
+        <CommandCenterGuidedDemo />
+
+        <div id="command-center-kpis" className="grid gap-2 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-8 scroll-mt-28">
           {kpi.map((t) => (
             <div key={t.label} className="rounded-lg border border-slate-200 bg-white px-3 py-2 shadow-sm">
               <p className="text-2xl font-bold tabular-nums text-slate-900">{t.value}</p>
