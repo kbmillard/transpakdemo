@@ -32,8 +32,15 @@ export function JobScanFlowPanel({ job }: JobScanFlowPanelProps) {
   const [aiSummary, setAiSummary] = useState<string | null>(null);
 
   const draftSummary = useMemo(
-    () => generateAiSummaryForUpdate({ jobId: job.id, status, note, jobTitle: job.title }),
-    [job.id, job.title, note, status],
+    () =>
+      generateAiSummaryForUpdate({
+        jobId: job.id,
+        status,
+        note,
+        jobTitle: job.title,
+        job,
+      }),
+    [job, note, status],
   );
 
   return (
@@ -52,7 +59,10 @@ export function JobScanFlowPanel({ job }: JobScanFlowPanelProps) {
       <select
         id={`status-${job.id}`}
         value={status}
-        onChange={(e) => setStatus(e.target.value)}
+        onChange={(e) => {
+          setStatus(e.target.value);
+          setAiSummary(null);
+        }}
         className="mt-2 w-full rounded-2xl border border-white/15 bg-white/10 px-3 py-2 text-sm text-white outline-none"
       >
         {STATUSES.map((s) => (
@@ -68,7 +78,10 @@ export function JobScanFlowPanel({ job }: JobScanFlowPanelProps) {
       <textarea
         id={`note-${job.id}`}
         value={note}
-        onChange={(e) => setNote(e.target.value)}
+        onChange={(e) => {
+          setNote(e.target.value);
+          setAiSummary(null);
+        }}
         rows={3}
         className="mt-2 w-full rounded-2xl border border-white/15 bg-white/10 px-3 py-2 text-sm text-white outline-none placeholder:text-white/35"
         placeholder="What changed on the floor?"
@@ -84,6 +97,7 @@ export function JobScanFlowPanel({ job }: JobScanFlowPanelProps) {
           onChange={(e) => {
             const f = e.target.files?.[0];
             setPhotoName(f?.name ?? null);
+            setAiSummary(null);
           }}
         />
         {photoName ? <p className="mt-2 text-xs text-emerald-300">Selected: {photoName}</p> : null}
@@ -146,7 +160,12 @@ export function JobScanFlowPanel({ job }: JobScanFlowPanelProps) {
       <div className="mt-6">
         <p className="text-xs font-semibold uppercase tracking-wide text-white/55">Job QR</p>
         <div className="mt-3 scale-90 origin-top-left">
-          <QrCodeCard title={job.title} route={job.qrRoute} subtitle={job.id} meta={`Status: ${job.status}`} />
+          <QrCodeCard
+            title={job.title}
+            route={job.qrRoute}
+            subtitle={job.id}
+            meta={`Field status (demo): ${status} · Job record: ${job.status}`}
+          />
         </div>
       </div>
     </div>

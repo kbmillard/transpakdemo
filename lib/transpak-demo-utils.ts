@@ -36,19 +36,58 @@ export function getCustomerPortalById(customerId: string) {
   return customerPortalRecords.find((c) => c.customerId === customerId);
 }
 
+/** Deterministic demo “next step” copy — varies by field status selection. */
+export function recommendedNextStepForFieldStatus(
+  status: string,
+  job?: Pick<DemoJob, "blockers" | "nextBestAction">,
+): string {
+  const s = status.trim().toLowerCase();
+
+  if (s === "completed") {
+    return "Finalize internal checklists, archive field evidence, and route a customer-safe closure note after approver sign-off.";
+  }
+  if (s === "blocked") {
+    if (job?.blockers?.length) {
+      return `Clear blockers first: ${job.blockers.slice(0, 2).join("; ")}. Reassign owner if stalled.`;
+    }
+    return "Identify owning department, set a dated recovery plan, and hold outbound customer promises until unblocked.";
+  }
+  if (s === "waiting on paperwork") {
+    return "Route missing documents to compliance; do not advance carrier or customer timelines until the file is complete.";
+  }
+  if (s === "photo review needed") {
+    return "Send uploads to QA; reshoot failed checkpoints before the job status advances.";
+  }
+  if (s === "customer update needed") {
+    return "Draft customer-facing wording for approver review; keep internal risk language out of external copy.";
+  }
+  if (s === "loaded") {
+    return "Confirm BOL / pickup proof, capture carrier PRO, and reflect handoff in the command center lane.";
+  }
+  if (s === "ready") {
+    return "Run pre-start verification (tools, materials, work order) before clocking meaningful floor time.";
+  }
+  if (s === "in progress") {
+    return "Continue photo checkpoints; escalate variances to the lead tech before end of shift.";
+  }
+  return "Confirm documentation checkpoints and publish a customer-ready update after human review.";
+}
+
 export function generateAiSummaryForUpdate(params: {
   jobId: string;
   status: string;
   note: string;
   jobTitle?: string;
+  job?: Pick<DemoJob, "blockers" | "nextBestAction">;
 }): string {
   const title = params.jobTitle ?? params.jobId;
+  const next = recommendedNextStepForFieldStatus(params.status, params.job);
   return (
     `AI summary: ${title} moved to ${params.status}. ` +
     (params.note.trim()
       ? `Field note captured: ${params.note.trim().slice(0, 160)}${params.note.length > 160 ? "…" : ""} `
       : "") +
-    `Recommended next step: confirm documentation checkpoints and publish a customer-ready update after human review.`
+    `Recommended next step: ${next}`
   );
 }
 
@@ -75,10 +114,13 @@ export function generateScanFlowUpdate(params: {
   createdBy?: string;
 }): ScanFlowUpdate {
   const createdAt = new Date().toISOString();
+  const job = params.relatedType === "job" ? getJobById(params.relatedId) : undefined;
   const aiSummary = generateAiSummaryForUpdate({
     jobId: params.relatedId,
     status: params.status,
     note: params.note,
+    jobTitle: job?.title,
+    job,
   });
 
   return {
