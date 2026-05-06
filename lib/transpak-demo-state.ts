@@ -6,6 +6,7 @@ import { generateScanFlowUpdate } from "./transpak-demo-utils";
 const UPDATES_KEY = "transpak-demo-updates";
 const APPROVED_UPDATES_KEY = "transpak-demo-approved-customer-updates";
 const DOC_REVIEW_KEY = "transpak-demo-reviewed-docs";
+const DOC_STATUS_KEY = "transpak-demo-document-status";
 const QUOTE_ACTION_KEY = "transpak-demo-quote-actions";
 
 export function getDemoUpdates(): ScanFlowUpdate[] {
@@ -71,6 +72,27 @@ export function setDocumentReviewed(docId: string, reviewed: boolean): void {
   const prev = getReviewedDocuments();
   prev[docId] = reviewed;
   window.localStorage.setItem(DOC_REVIEW_KEY, JSON.stringify(prev));
+}
+
+export function getDocumentStatusOverrides(): Record<string, string> {
+  if (typeof window === "undefined") return {};
+  try {
+    const raw = window.localStorage.getItem(DOC_STATUS_KEY);
+    return raw ? (JSON.parse(raw) as Record<string, string>) : {};
+  } catch {
+    return {};
+  }
+}
+
+export function setDocumentStatusOverride(docId: string, status: string | null): void {
+  if (typeof window === "undefined") return;
+  const prev = getDocumentStatusOverrides();
+  if (!status) {
+    delete prev[docId];
+  } else {
+    prev[docId] = status;
+  }
+  window.localStorage.setItem(DOC_STATUS_KEY, JSON.stringify(prev));
 }
 
 export function getQuoteActions(): Record<string, string> {

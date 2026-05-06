@@ -235,11 +235,11 @@ export function TransPakAIOverview() {
                   Open ScanFlow Mobile Demo
                 </Link>
                 <Link
-                  href="/qr"
+                  href="/jobs/TPK-1001"
                   className="inline-flex items-center gap-2 rounded-full border border-[#19212A]/15 bg-white/90 px-5 py-3 text-sm font-semibold text-[#19212A] backdrop-blur-md transition hover:border-[#D80B3C]/35"
                 >
                   <Printer className="h-4 w-4" aria-hidden />
-                  Print QR Demo Sheet
+                  Open Job QR
                 </Link>
                 <Link
                   href="/demo/quote-to-shop"
@@ -369,8 +369,8 @@ export function TransPakAIOverview() {
                       <span className="text-[#19212A]/25" aria-hidden>
                         ·
                       </span>
-                      <Link href="/qr" className="text-sm font-semibold text-[#D80B3C] hover:underline">
-                        QR Demo Sheet
+                      <Link href="/jobs/TPK-1001" className="text-sm font-semibold text-[#D80B3C] hover:underline">
+                        Job QR
                       </Link>
                     </div>
                   </div>

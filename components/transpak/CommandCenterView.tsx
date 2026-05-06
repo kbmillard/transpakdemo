@@ -14,9 +14,11 @@ import {
 } from "@/lib/transpak-demo-seed";
 import { useDemoUpdates } from "@/hooks/useDemoUpdates";
 import {
+  getDocumentStatusOverrides,
   getQuoteActions,
   getReviewedDocuments,
   setDocumentReviewed,
+  setDocumentStatusOverride,
   setQuoteAction,
 } from "@/lib/transpak-demo-state";
 import { StatusChip } from "./StatusChip";
@@ -36,6 +38,8 @@ const LEAD_FILTERS = [
   "Defense",
   "Lab equipment",
 ] as const;
+
+const DOCUMENT_STATUS_OPTIONS = ["ready", "missing", "needs_review", "approved", "reviewed"] as const;
 
 function filterLabelToCategory(label: string): string | null {
   const map: Record<string, string> = {
@@ -67,6 +71,68 @@ export function CommandCenterView() {
   const updates = useDemoUpdates();
   const [leadFilter, setLeadFilter] = useState<string>("All");
   const [, force] = useState(0);
+  const reviewedDocuments = getReviewedDocuments();
+  const documentStatusOverrides = getDocumentStatusOverrides();
+
+  const openQrPopup = async (route: string, title: string, id: string, meta?: string) => {
+    const popup = window.open("", "_blank", "width=460,height=640");
+    if (!popup) {
+      window.alert("Pop-up blocked — allow pop-ups for this site.");
+      return;
+    }
+
+    const escapeHtml = (s: string) =>
+      s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/\"/g, "&quot;");
+
+    const url = `${window.location.origin}${route}`;
+    popup.document.write(`
+      <!doctype html>
+      <html>
+        <head>
+          <meta charset="utf-8" />
+          <title>${escapeHtml(id)} QR</title>
+          <style>
+            body { margin: 0; padding: 16px; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background: #f8fafc; color: #19212A; }
+            .card { background: #fff; border: 1px solid #e2e8f0; border-radius: 14px; padding: 16px; }
+            .row { display: flex; align-items: flex-start; gap: 14px; }
+            .qr { width: 200px; height: 200px; border: 1px solid #e2e8f0; border-radius: 12px; display:flex; align-items:center; justify-content:center; background:#fff; }
+            .id { color: #D80B3C; font-weight: 700; margin: 0; font-size: 12px; letter-spacing: 0.02em; }
+            .title { font-size: 15px; font-weight: 700; margin: 4px 0 0; line-height: 1.25; }
+            .meta { margin: 8px 0 0; font-size: 12px; font-weight: 600; color: #D80B3C; }
+            .url { margin-top: 10px; font-size: 11px; color: #64748b; word-break: break-all; font-family: ui-monospace, monospace; }
+            .btn { margin-top: 12px; border: 1px solid #19212A25; background: #19212A; color: #fff; font-weight: 700; border-radius: 8px; padding: 8px 12px; cursor: pointer; }
+            .hint { margin-top: 10px; font-size: 11px; color: #64748b; }
+          </style>
+        </head>
+        <body>
+          <div class="card">
+            <div class="row">
+              <div class="qr" id="qr-box">Generating…</div>
+              <div>
+                <p class="id">${escapeHtml(id)}</p>
+                <p class="title">${escapeHtml(title)}</p>
+                ${meta ? `<p class="meta">${escapeHtml(meta)}</p>` : ""}
+                <p class="url">${escapeHtml(url)}</p>
+                <button class="btn" onclick="window.print()">Print label</button>
+              </div>
+            </div>
+            <p class="hint">Use this QR for demo scanning or print this label.</p>
+          </div>
+        </body>
+      </html>
+    `);
+    popup.document.close();
+
+    const QRCode = (await import("qrcode")).default;
+    const qrDataUrl = await QRCode.toDataURL(url, {
+      width: 180,
+      margin: 1,
+      color: { dark: "#19212A", light: "#ffffffff" },
+    });
+    const qrBox = popup.document.getElementById("qr-box");
+    if (!qrBox) return;
+    qrBox.innerHTML = `<img src="${qrDataUrl}" alt="${escapeHtml(id)} QR code" width="180" height="180" />`;
+  };
 
   const leads = useMemo(() => {
     if (leadFilter === "All") return leadExamples;
@@ -125,9 +191,6 @@ export function CommandCenterView() {
           <nav className="flex flex-wrap items-center gap-1 text-xs font-semibold">
             <Link href="/scanflow" className="rounded px-2 py-1 text-slate-700 hover:bg-slate-100">
               ScanFlow
-            </Link>
-            <Link href="/qr" className="rounded px-2 py-1 text-slate-700 hover:bg-slate-100">
-              QR Sheet
             </Link>
             <Link href="/demo/quote-to-shop" className="rounded px-2 py-1 text-slate-700 hover:bg-slate-100">
               Quote-to-Shop
@@ -260,9 +323,15 @@ export function CommandCenterView() {
                             <Link href={`/customer-updates/${j.id}`} className="rounded border border-slate-300 px-2 py-0.5 text-[11px] font-semibold hover:bg-slate-50">
                               Update
                             </Link>
-                            <Link href="/qr" className="rounded border border-slate-300 px-2 py-0.5 text-[11px] font-semibold hover:bg-slate-50">
+                            <button
+                              type="button"
+                              className="rounded border border-slate-300 bg-white px-2 py-0.5 text-[11px] font-semibold hover:bg-slate-50"
+                              onClick={() => {
+                                void openQrPopup(j.qrRoute, j.title, j.id, `Status: ${j.status}`);
+                              }}
+                            >
                               QR
-                            </Link>
+                            </button>
                             <Link href="/scanflow/scanner" className="rounded border border-slate-300 px-2 py-0.5 text-[11px] font-semibold hover:bg-slate-50">
                               ScanFlow
                             </Link>
@@ -341,30 +410,57 @@ export function CommandCenterView() {
                   </thead>
                   <tbody>
                     {demoDocuments.map((d) => {
-                      const reviewed = Boolean(getReviewedDocuments()[d.id]);
+                      const reviewed = Boolean(reviewedDocuments[d.id]);
+                      const status = documentStatusOverrides[d.id] ?? (reviewed ? "reviewed" : d.status);
+                      const label = status.replaceAll("_", " ");
+                      const tone =
+                        status === "approved" || status === "reviewed"
+                          ? "success"
+                          : status === "missing"
+                            ? "danger"
+                            : status === "needs_review"
+                              ? "warning"
+                              : "neutral";
                       return (
                         <tr key={d.id} className="border-b border-slate-100 hover:bg-slate-50">
                           <td className="px-3 py-2 font-medium">{d.name}</td>
                           <td className="px-3 py-2">{d.jobTitle}</td>
                           <td className="px-3 py-2">
-                            <StatusChip
-                              label={reviewed ? "Reviewed" : d.status.replace("_", " ")}
-                              tone={reviewed ? "success" : d.status === "missing" ? "danger" : "warning"}
-                            />
+                            <StatusChip label={label} tone={tone} />
                           </td>
                           <td className="max-w-[260px] px-3 py-2 text-slate-600">{d.aiExtractionSummary}</td>
                           <td className="px-3 py-2 text-slate-600">{d.missingFields.join(", ") || "—"}</td>
                           <td className="px-3 py-2">
-                            <button
-                              type="button"
-                              className="rounded border border-slate-300 bg-white px-2 py-0.5 text-[11px] font-semibold hover:bg-slate-50"
-                              onClick={() => {
-                                setDocumentReviewed(d.id, true);
-                                force((x) => x + 1);
-                              }}
-                            >
-                              Mark reviewed
-                            </button>
+                            <div className="flex flex-wrap items-center gap-1">
+                              <select
+                                aria-label={`Set status for ${d.name}`}
+                                value={status}
+                                className="rounded border border-slate-300 bg-white px-2 py-1 text-[11px] font-semibold text-slate-800"
+                                onChange={(e) => {
+                                  const next = e.target.value;
+                                  setDocumentStatusOverride(d.id, next);
+                                  setDocumentReviewed(d.id, next === "reviewed");
+                                  force((x) => x + 1);
+                                }}
+                              >
+                                {DOCUMENT_STATUS_OPTIONS.map((opt) => (
+                                  <option key={opt} value={opt}>
+                                    {opt.replaceAll("_", " ")}
+                                  </option>
+                                ))}
+                              </select>
+                              <button
+                                type="button"
+                                className="rounded border border-slate-300 bg-white px-2 py-1 text-[11px] font-semibold hover:bg-slate-50"
+                                onClick={() => {
+                                  setDocumentStatusOverride(d.id, null);
+                                  setDocumentReviewed(d.id, false);
+                                  force((x) => x + 1);
+                                }}
+                              >
+                                Reset
+                              </button>
+                            </div>
                           </td>
                         </tr>
                       );

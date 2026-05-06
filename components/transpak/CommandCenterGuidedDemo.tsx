@@ -6,7 +6,7 @@ import { ChevronRight } from "lucide-react";
 const DEMO_PATH = [
   { n: 1, label: "Quote", href: "/demo/quote-to-shop" },
   { n: 2, label: "Job", href: "/jobs/TPK-1001" },
-  { n: 3, label: "QR", href: "/qr" },
+  { n: 3, label: "QR", href: "/jobs/TPK-1001" },
   { n: 4, label: "ScanFlow", href: "/scanflow" },
   { n: 5, label: "Customer Update", href: "/customer-updates/TPK-1001" },
   { n: 6, label: "Command Center", href: "/#command-center-kpis" },
@@ -31,8 +31,8 @@ const STEPS = [
   {
     title: "View the QR code",
     body: "Every job, asset, or shipment can have a scannable route into the right workflow.",
-    href: "/qr",
-    cta: "View QR Sheet",
+    href: "/jobs/TPK-1001",
+    cta: "Open Job QR",
     primary: false,
   },
   {

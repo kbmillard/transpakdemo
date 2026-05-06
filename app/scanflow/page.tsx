@@ -71,8 +71,8 @@ export default function ScanflowHomePage() {
           <p className="text-sm font-bold">Quick links</p>
         </div>
         <div className="mt-3 grid gap-2">
-          <Link href="/qr" className="rounded-2xl border border-[#19212A]/10 bg-white px-3 py-2 text-sm font-semibold">
-            Print QR demo sheet
+          <Link href="/jobs/TPK-1001" className="rounded-2xl border border-[#19212A]/10 bg-white px-3 py-2 text-sm font-semibold">
+            Open demo job QR
           </Link>
           <Link href="/" className="rounded-2xl border border-[#19212A]/10 bg-white px-3 py-2 text-sm font-semibold">
             Command center
