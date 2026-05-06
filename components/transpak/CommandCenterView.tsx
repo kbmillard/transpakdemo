@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import type { ReactNode } from "react";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { ClipboardList, Radar, ShieldAlert, Truck } from "lucide-react";
 import {
   demoDocuments,
@@ -64,8 +64,19 @@ function Panel({ title, children }: { title: string; children: ReactNode }) {
 
 export function CommandCenterView() {
   const updates = useDemoUpdates();
+  /** Avoid SSR/client HTML mismatch: localStorage differs from server; defer until mounted. */
+  const [hydrated, setHydrated] = useState(false);
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- mount gate so server HTML matches first client paint (localStorage)
+    setHydrated(true);
+  }, []);
+  const updatesForUi = hydrated ? updates : [];
+
   const [leadFilter, setLeadFilter] = useState<string>("All");
   const [, force] = useState(0);
+
+  const quoteActionsMap = hydrated ? getQuoteActions() : {};
+  const reviewedDocs = hydrated ? getReviewedDocuments() : {};
 
   const leads = useMemo(() => {
     if (leadFilter === "All") return leadExamples;
@@ -88,9 +99,9 @@ export function CommandCenterView() {
       docs: docReview,
       shipmentsAtRisk: shipRisk,
       updatesDrafted: drafts,
-      scanflowUpdates: updates.length,
+      scanflowUpdates: hydrated ? updates.length : 0,
     };
-  }, [updates.length]);
+  }, [updates.length, hydrated]);
 
   const kpi = [
     { label: "Public-fit accounts", value: stats.leads },
@@ -183,7 +194,7 @@ export function CommandCenterView() {
                   </thead>
                   <tbody>
                     {quoteRequests.map((q) => {
-                      const action = getQuoteActions()[q.id];
+                      const action = quoteActionsMap[q.id];
                       return (
                         <tr key={q.id} className="border-b border-slate-100 hover:bg-slate-50">
                           <td className="whitespace-nowrap px-3 py-2 font-mono font-semibold text-[#D80B3C]">{q.id}</td>
@@ -346,7 +357,7 @@ export function CommandCenterView() {
                   </thead>
                   <tbody>
                     {demoDocuments.map((d) => {
-                      const reviewed = Boolean(getReviewedDocuments()[d.id]);
+                      const reviewed = Boolean(reviewedDocs[d.id]);
                       return (
                         <tr key={d.id} className="border-b border-slate-100 hover:bg-slate-50">
                           <td className="px-3 py-2 font-medium">{d.name}</td>
@@ -496,13 +507,13 @@ export function CommandCenterView() {
 
             <Panel title="Recent ScanFlow updates">
               <div className="px-3 py-3">
-                {updates.length === 0 ? (
+                {updatesForUi.length === 0 ? (
                   <p className="text-xs text-slate-600">
                     Scan a QR code or open a demo job to create the first field update.
                   </p>
                 ) : (
                   <ul className="space-y-2">
-                    {updates.slice(0, 12).map((u) => (
+                    {updatesForUi.slice(0, 12).map((u) => (
                       <li key={u.id} className="rounded border border-slate-100 bg-slate-50 p-2 text-[11px]">
                         <span className="font-semibold">
                           {u.relatedType.toUpperCase()} · {u.relatedId}
