@@ -1,5 +1,5 @@
-import { CommandCenterView } from "@/components/transpak/CommandCenterView";
+import { redirect } from "next/navigation";
 
-export default function CommandCenterPage() {
-  return <CommandCenterView />;
+export default function CommandCenterRedirectPage() {
+  redirect("/");
 }

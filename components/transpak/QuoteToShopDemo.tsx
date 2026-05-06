@@ -72,7 +72,7 @@ export function QuoteToShopDemo() {
             <Link href="/customer-updates/TPK-1001" className="rounded-full border border-[#19212A]/12 bg-white px-4 py-2 text-xs font-semibold">
               Generate customer update
             </Link>
-            <Link href="/command-center" className="rounded-full bg-[#D80B3C] px-4 py-2 text-xs font-semibold text-white">
+            <Link href="/" className="rounded-full bg-[#D80B3C] px-4 py-2 text-xs font-semibold text-white">
               View command center
             </Link>
           </div>
@@ -218,7 +218,7 @@ export function QuoteToShopDemo() {
                       </div>
                     ))}
                   </div>
-                  <Link href="/command-center" className="mt-4 inline-flex rounded-full bg-[#D80B3C] px-4 py-2 text-xs font-semibold">
+                  <Link href="/" className="mt-4 inline-flex rounded-full bg-[#D80B3C] px-4 py-2 text-xs font-semibold">
                     Open command center
                   </Link>
                 </div>

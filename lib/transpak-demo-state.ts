@@ -36,6 +36,7 @@ export function saveDemoUpdateFromFields(params: Parameters<typeof generateScanF
 export function clearDemoUpdates(): void {
   if (typeof window === "undefined") return;
   window.localStorage.removeItem(UPDATES_KEY);
+  window.dispatchEvent(new Event("transpak-demo-updates"));
 }
 
 export function getApprovedCustomerUpdates(): Record<string, boolean> {

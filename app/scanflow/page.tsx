@@ -74,7 +74,7 @@ export default function ScanflowHomePage() {
           <Link href="/qr" className="rounded-2xl border border-[#19212A]/10 bg-white px-3 py-2 text-sm font-semibold">
             Print QR demo sheet
           </Link>
-          <Link href="/command-center" className="rounded-2xl border border-[#19212A]/10 bg-white px-3 py-2 text-sm font-semibold">
+          <Link href="/" className="rounded-2xl border border-[#19212A]/10 bg-white px-3 py-2 text-sm font-semibold">
             Command center
           </Link>
         </div>

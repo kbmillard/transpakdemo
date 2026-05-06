@@ -6,7 +6,7 @@ export default function manifest(): MetadataRoute.Manifest {
     short_name: "TransPak AI",
     description:
       "TransPak AI Command Center demo — public research leads, realistic workflow records, and functional QR routes.",
-    start_url: "/command-center",
+    start_url: "/",
     display: "standalone",
     background_color: "#f4f6f8",
     theme_color: "#19212a",

@@ -1,28 +1,34 @@
-CURSOR AGENT PROMPT — CREATE kbmillard/transpakdemo + BUILD TRANSPAK AI COMMAND CENTER + SCANFLOW QR DEMO TO COMPLETION
+CURSOR AGENT PROMPT — OVERRIDE + REBUILD TRANSPAKDEMO AS A SERIOUS OPERATIONAL PLATFORM
 
 You are in Cursor Agent mode.
 
-Use full project/codebase context. Before editing, inspect the project structure and identify the main app/page/components/data files used for this TransPak demo. Do not guess file paths. Reuse existing components, existing TransPak logo/brand assets, existing colors, existing typography, and existing section styling wherever possible.
+THIS IS AN OVERRIDE OF THE PREVIOUS PROMPT.
 
-You have permission to edit files and run terminal commands.
+The previous build drifted into a proposal / presentation / marketing homepage. That is wrong for this repo.
 
-Run commands as needed:
-- npm install only if dependencies are missing
-- npm run lint if available
-- npm run build if available
-- git status
-- git add/commit when the build is complete
-- create/push the GitHub repo if GitHub CLI is authenticated
+This repo must be:
+TRANSPAKDEMO — a serious operational software demo platform.
 
-Fix any TypeScript, import, lint, SSR, hydration, route, or build errors before reporting back.
+It must NOT be:
+- a proposal website
+- a pitch deck
+- a landing page
+- a marketing presentation
+- a clone of transpak.vercel.app
+- a page with “Launch Command Center” because the root page itself must already be the Command Center
 
-Do not use Ask mode. Do not only explain. Actually patch the project. Do not stop after partial scaffolding. Complete the demo end-to-end with routes, seeded data, working navigation, generated QR codes, mobile-ready UI, and a clear demo flow.
+The deployed root URL:
+https://transpakdemo.vercel.app/
+
+must open directly to the operational TransPak AI Command Center.
+
+No proposal homepage. No presentation homepage. No oversized hero. No “AI strategy overview” landing section. No “Keep current platforms...” marketing hero. No Vision / Savings / Pilot Plan proposal nav. No launch button to enter the app.
+
+When a user opens `/`, they should feel like they logged into internal enterprise software.
 
 ================================================================================
-REPO + LOGO SETUP — REQUIRED FIRST
+REPO + LOGO SETUP — REQUIRED
 ================================================================================
-
-Create this as a new GitHub project/repository:
 
 GitHub owner:
 kbmillard
@@ -34,309 +40,388 @@ Target GitHub repo:
 kbmillard/transpakdemo
 
 Preferred local project folder:
-"/Users/kyle/Desktop/transpak/transpakdemo"
+/Users/kyle/Desktop/transpak/transpakdemo
 
 Logo/source asset folder:
-"/Users/kyle/Desktop/transpak/transpakdemo/logos"
+/Users/kyle/Desktop/transpak/transpakdemo/logos
 
-Important:
-- Before building, inspect the logo folder:
-  /Users/kyle/Desktop/transpak/transpakdemo/logos
-- Use the TransPak logos from that folder throughout the demo.
-- Copy or reference the best logo assets into the project’s public assets folder as appropriate, for example:
-  public/logos/
-  public/transpak/
-  public/assets/logos/
-  depending on the current project structure.
-- Do not invent a new TransPak logo if real logo assets exist in the logos folder.
-- Use the logo as:
-  - top nav brand
-  - subtle watermark background
-  - QR sheet header/footer
-  - customer portal header
-  - ScanFlow mobile header
-  - app manifest/icon source if practical
+Before building:
+1. Inspect the current project structure.
+2. Inspect the logo folder:
+   /Users/kyle/Desktop/transpak/transpakdemo/logos
+3. Use the best TransPak logo assets from that folder.
+4. Copy logo assets into the project public folder if needed.
+5. Use the logo in:
+   - compact app header
+   - ScanFlow mobile header
+   - QR sheet header/footer
+   - customer portal header
+   - subtle watermark only where it does not hurt readability
+   - manifest/icon source only if practical
 
-Git/GitHub instructions:
-1. If the current folder is not already the intended project folder, create or move into:
-   /Users/kyle/Desktop/transpak/transpakdemo
-
-2. Initialize git if needed:
-   git init
-
-3. If GitHub CLI is available and authenticated, create the GitHub repo:
-   gh repo create kbmillard/transpakdemo --public --source=. --remote=origin --push
-
-4. If gh says the repo already exists:
-   - connect origin to git@github.com:kbmillard/transpakdemo.git or https://github.com/kbmillard/transpakdemo.git
-   - continue without failing
-
-5. If GitHub CLI is not authenticated:
-   - still complete the local project
-   - commit everything locally
-   - provide the exact commands Kyle should run to create/push the repo
-
-6. At completion:
-   - git status
-   - git add .
-   - git commit -m "Build TransPak AI Command Center demo"
-   - push to origin if remote is configured and auth works
-
-Do not stop the build because GitHub creation fails. The working project is the priority. If repo creation fails due to auth, finish the local project and tell Kyle exactly what to run.
+Git/GitHub:
+- Initialize git if needed.
+- If GitHub CLI is authenticated, create/connect repo:
+  kbmillard/transpakdemo
+- If the repo already exists, connect origin and continue.
+- Do not stop if GitHub repo creation fails. Finish the local build and return exact push commands.
+- After successful build:
+  git status
+  git add .
+  git commit -m "Rebuild TransPak demo as operational command center"
+  git push origin main
 
 ================================================================================
-PRIMARY GOAL
+ABSOLUTE DESIGN DIRECTION
 ================================================================================
 
-Build a gorgeous, premium, extremely impressive TransPak AI demo platform inside this existing project:
+This project must look like serious enterprise operations software.
+
+Design keywords:
+- serious
+- functional
+- operational
+- enterprise SaaS
+- internal command center
+- app dashboard
+- dense enough to feel real
+- polished through clarity and usefulness
+- iOS-ready for mobile workflows
+- professional industrial B2B
+
+Do NOT use:
+- proposal-style pages
+- marketing hero pages
+- giant centered headlines
+- flashy animated landing sections
+- huge pitch CTAs
+- “AI Strategy Overview for TransPak”
+- “Keep current platforms. Add the AI operating layer on top.”
+- Vision / AI Opportunities / App-ready / Build path / Savings / Pilot Plan nav
+- “Launch AI Command Center” button on root
+- final sales CTA section
+- presentation copy
+- decorative design that overpowers the data
+- anything that looks like transpak.vercel.app
+
+Use:
+- compact app header
+- practical dashboard title row
+- KPI strip
+- tables/lists
+- status chips
+- dense operational panels
+- clear row actions
+- compact navigation
+- TransPak red for priority/accent only
+- white/slate/navy
+- subtle borders and shadows
+- no fluff
+
+The page should feel like:
+“TransPak opened the AI operating system.”
+
+Not:
+“TransPak is reading a proposal.”
+
+================================================================================
+PRIMARY PRODUCT
+================================================================================
+
+Build one connected operational demo platform:
 
 TRANSPAK AI COMMAND CENTER
-with
++
 TRANSPAK SCANFLOW MOBILE FIELD APP
 
-This should feel like one connected AI operating layer, not a collection of disconnected pages.
-
-The demo must show:
-
+This platform must show:
 1. Real public lead intelligence examples
 2. Realistic TransPak-style jobs
 3. Real functional QR codes
 4. Live app routes for jobs, assets, shipments, and customer updates
-5. A desktop command center
-6. A mobile/iOS-ready ScanFlow app experience
-7. A read-only customer portal
-8. A quote-to-shop workflow demo
+5. Desktop command center
+6. Mobile/iOS-ready ScanFlow field app
+7. Read-only customer portal
+8. Quote-to-shop workflow demo
 9. Human-approved AI behavior
-10. Clear honest positioning that this is demo/public research data until connected to approved TransPak systems
+10. Honest demo positioning
 
-This should make TransPak immediately understand:
-
-“This is not just ChatGPT. This is business software that fits our actual work.”
+The demo must make TransPak understand:
+“This is not just ChatGPT. This is business software wrapped around real workflows.”
 
 ================================================================================
-CRITICAL POSITIONING RULES
+ROOT ROUTE REQUIREMENT
 ================================================================================
 
-Use this positioning across the product UI where needed:
+The root route `/` is the Command Center.
 
-"This demo uses real public lead examples, realistic TransPak-style job records, and functional QR codes to show how the system would work once connected to approved internal data."
+Do not create a separate landing page.
 
-Also include this idea somewhere in the command center or demo flow:
+Required:
+- `/` renders the TransPak AI Command Center operational dashboard.
+- `/command-center` either renders the same Command Center component or redirects to `/`.
+- There should be no “Launch Command Center” button anywhere on `/`.
 
-"Here is what the AI operating layer would feel like once it is wrapped around your real workflows."
+The top-level app should have compact utility links only:
+- ScanFlow
+- QR Sheet
+- Quote-to-Shop
+- Customer Portal
+- maybe Clear Demo Updates
 
-Do NOT:
-- Claim TransPak uses a specific CRM vendor
-- Mention HubSpot
-- Claim access to TransPak internal systems
-- Make it look like TransPak already owns the public lead accounts
-- Make it look like this demo is connected to live TransPak systems
-- Send real outreach
-- Use fake claims that a company is actively buying or expanding unless clearly marked as public research / verify before outreach
+================================================================================
+REMOVE / DO NOT USE PROPOSAL CONTENT
+================================================================================
 
-Use wording like:
-- public research example
-- realistic demo job
-- demo mode
-- human-approved
-- where access is available
-- current workflow
-- current systems
-- existing business systems
-- CRM where appropriate
-- ERP where appropriate
-- quote forms
-- spreadsheets
-- PDFs
-- email workflows
-- shop updates
-- shipment records
-- app-ready workflow
-- iOS / Android ready after value is proven
+Do not include any previous proposal website sections in this repo.
+
+Remove from the root flow:
+- pitch hero
+- proposal navigation
+- AI strategy overview
+- business proposal copy
+- build philosophy quote section
+- planning comparison section
+- internal AI tools vs build partner section
+- savings section
+- pilot plan section
+- final CTA section
+- “View AI Opportunities”
+- “Build path”
+- “Savings”
+- “Pilot Plan”
+- “Demo Flow” as proposal sections
+
+If old proposal content exists:
+- Delete it from the root route.
+- Or move it to `/proposal-reference` ONLY if preserving it is useful.
+- Do not link `/proposal-reference` from the app.
+- The main product should not expose proposal content.
+
+================================================================================
+ROOT COMMAND CENTER LAYOUT
+================================================================================
+
+Build `/` as a serious dashboard.
+
+1. Compact app header
+- TransPak logo
+- Product label: AI Command Center
+- Demo Mode badge
+- Utility nav:
+  - ScanFlow
+  - QR Sheet
+  - Quote-to-Shop
+  - Customer Portal
+- Optional small status:
+  - Demo data
+  - Human approval enabled
+
+2. Dashboard title row
+Small page title:
+AI Command Center
+
+Concise operational description:
+Live demo workspace for public-fit leads, quote intake, active jobs, shipment risks, documents, field updates, and customer-ready communication.
+
+Compact demo disclaimer:
+Demo data uses public lead examples and realistic workflow records. Production would connect only to approved internal systems.
+
+3. KPI strip
+Compact stat cards:
+- Public-fit accounts
+- Quote requests
+- Active jobs
+- Blocked jobs
+- Docs needing review
+- Shipments at risk
+- Customer updates drafted
+- ScanFlow updates
+
+4. Main dashboard grid
+Use a functional layout.
+
+Main / left column:
+- Quote Intake Queue
+- Active Jobs
+- Public Lead Intelligence
+- Document Review Hub
+
+Right column:
+- Next Best Actions
+- Shipment Risks
+- Shop Blockers
+- Recent ScanFlow Updates
+
+5. Data presentation
+Use tables/lists instead of marketing cards.
+
+Rows should show:
+- ID
+- company
+- status
+- priority
+- owner
+- due date
+- next action
+- action buttons
+
+Buttons:
+- Open
+- Review
+- Generate update
+- View QR
+- Open ScanFlow
+- Mark reviewed
+
+6. UX behavior
+- Filters/chips where useful
+- Status pills
+- Priority indicators
+- Compact sections
+- Real links
+- Helpful empty states
+- localStorage actions when practical
+
+================================================================================
+ROUTES TO BUILD AND VERIFY
+================================================================================
+
+These routes must exist and render:
+
+/ 
+Operational Command Center.
+
+/command-center
+Same Command Center or redirect to /.
+
+/scanflow
+Mobile-first ScanFlow field app.
+
+/scanflow/scanner
+QR scanner with camera if stable, fallback manual entry and demo scan buttons.
+
+/qr
+Printable/scannable QR demo sheet.
+
+/demo/quote-to-shop
+Guided operational workflow demo, not a marketing page.
+
+/jobs/TPK-1001
+Job detail.
+
+/jobs/TPK-1008
+Urgent job detail.
+
+/assets/FORKLIFT-04
+Asset maintenance detail.
+
+/shipments/SHP-2207
+Shipment detail.
+
+/customer-updates/TPK-1001
+Customer update generator.
+
+/portal/CUST-001
+Read-only customer portal.
+
+Do not leave routes empty.
+Do not leave dead buttons.
+Do not create TODO-only pages.
+Do not require backend setup.
+Do not require API keys.
 
 ================================================================================
 TECHNICAL TARGET
 ================================================================================
 
-Build this as a Next.js web app/PWA-ready experience first, not a native app yet.
+Build this as a Next.js web app / PWA-ready experience first.
 
-The UI should be ready to become an iOS/Android app later.
+No native iOS app yet, but the UI must be ready for iOS/Android later.
 
-If the project uses:
-- Next.js App Router, follow the app directory patterns
-- TypeScript, use strict typed data where possible
-- Tailwind, use Tailwind classes
-- shadcn/ui, reuse or extend existing components
-- lucide-react, use it for icons if already installed or install if needed
+Use current project stack:
+- Next.js App Router if present
+- TypeScript
+- Tailwind
+- shadcn/ui if present
+- lucide-react if present or install if needed
 
 Dependencies:
 - Use existing dependencies first.
-- If QR generation is not already available, install qrcode and @types/qrcode.
-- If camera QR scanning is practical, install html5-qrcode and use it only in client components with dynamic import / browser-safe handling.
-- If camera QR scanning becomes unstable or causes SSR/build issues, still generate real QR codes and provide a robust fallback scanner screen with manual code entry and demo scan buttons. The app must build.
+- If QR generation is missing, install:
+  qrcode
+  @types/qrcode
+- If camera QR scanning is practical and stable, install:
+  html5-qrcode
+- Import QR scanner browser-only code dynamically or client-side only.
+- If camera scanner causes SSR/build issues, remove camera dependency and keep:
+  - real QR code generation
+  - manual scanner input
+  - demo scan buttons
 
-Do not require API keys.
-Do not require a database.
-Use local seeded data and localStorage for demo interactions.
-The demo must work immediately after build/deploy.
+No required:
+- OpenAI API key
+- database
+- auth
+- email API
+- CRM API
+- ERP API
+- map API
 
-================================================================================
-ROUTES TO BUILD
-================================================================================
+Use:
+- seeded local data
+- deterministic mock AI generation
+- localStorage for demo state
 
-Add these routes if they do not already exist. If the project has a different route naming convention, adapt while keeping the same user-facing behavior.
+The demo must work immediately on Vercel.
 
-1. /command-center
-Desktop AI Command Center dashboard.
+Recommended env vars only:
+NEXT_PUBLIC_SITE_URL=https://transpakdemo.vercel.app
+NEXT_PUBLIC_DEMO_MODE=true
 
-2. /scanflow
-Mobile-first ScanFlow field app home screen.
-
-3. /scanflow/scanner
-QR scanner screen with real camera scanning if possible, fallback manual scan input, and demo scan buttons.
-
-4. /jobs/[jobId]
-Job detail page opened by QR codes.
-
-5. /assets/[assetId]
-Asset detail / maintenance logger page opened by QR codes.
-
-6. /shipments/[shipmentId]
-Shipment detail / staging update page opened by QR codes.
-
-7. /customer-updates/[jobId]
-Customer update generator page for a job.
-
-8. /portal/[customerId]
-Read-only customer portal page.
-
-9. /qr
-Printable / scannable QR code sheet for all demo jobs, assets, shipments, and customer portals.
-
-10. /demo/quote-to-shop
-Guided demo flow showing quote request -> AI intake -> estimator review -> job creation -> ScanFlow QR -> photo/status update -> customer update -> executive dashboard.
-
-Update the existing homepage/pitch page navigation to include:
-- Launch Command Center
-- Open ScanFlow
-- QR Demo Sheet
-- Quote-to-Shop Demo
-
-Keep the current pitch page intact. Do not destroy existing sections. Add this as the app/demo layer connected to the pitch.
+Code must not break if env vars are missing.
 
 ================================================================================
-OVERALL INFORMATION ARCHITECTURE
+CLIENT / SERVER SAFETY
 ================================================================================
 
-The demo platform should feel like this:
+Fix any production crashes.
 
-TRANSPAK AI COMMAND CENTER
-- Executive Command View
-- Public Lead Intelligence
-- Quote Intake Queue
-- Job Board
-- Document Review Hub
-- Shop / Distribution Visibility
-- Shipment Risk Monitor
-- Customer Update Generator
-- Next Best Actions
+Common problems to prevent:
+- localStorage used in server components
+- window/document used during SSR
+- QR scanner library imported server-side
+- browser-only APIs imported in server files
+- hydration mismatch
+- missing default exports
+- bad dynamic params
+- missing data lookup fallback
 
-TRANSPAK SCANFLOW MOBILE APP
-- QR Scanner
-- Open Job
-- Upload Photo
-- Select Status
-- Add Text/Voice Note
-- AI Summarizes Update
-- Dashboard Reflects Change
-- Customer Update Draft Appears
-
-CUSTOMER PORTAL
-- Read-only status
-- Job/shipment progress
-- Photos
-- Documents
-- Updates
-- Assigned contact
-- Open issues
-
-QR DEMO SHEET
-- Real QR codes that point to live routes
-- Jobs
-- Assets
-- Shipments
-- Customer portal examples
-
-QUOTE-TO-SHOP DEMO FLOW
-- A fake quote request becomes structured work
-- A QR code opens the job
-- A phone uploads job photos
-- AI summarizes the update
-- Dashboard changes
-- A customer-ready message is drafted
-- Leadership sees the impact
+Rules:
+- Any localStorage/window/document usage must be in `"use client"` components.
+- Guard browser-only access:
+  typeof window !== "undefined"
+- Dynamic import browser-only QR scanner code.
+- Use safe fallbacks if data is not found.
+- If a record ID is invalid, show a polished “record not found” page with links back to Command Center and QR Sheet.
 
 ================================================================================
-DESIGN SYSTEM
+DATA LAYER
 ================================================================================
 
-Make this gorgeous, premium, serious B2B, and iOS-ready.
-
-Use the current TransPak page style as the base:
-- White / pale gray base
-- Deep navy / near-black command panels
-- TransPak red accent
-- Glassy cards
-- Soft shadows
-- Rounded 2xl or 3xl corners
-- Subtle TransPak logo watermark in backgrounds
-- Thin borders
-- Premium spacing
-- Strong type hierarchy
-- No clutter
-- No cheesy AI gradients
-- No cartoon styling
-
-Desktop Command Center:
-- Should feel like an executive operations brain
-- Use dense but readable cards
-- Use stat tiles, urgent queues, timeline, priority actions
-- Use panels for leads, jobs, docs, shipments, blockers
-
-Mobile ScanFlow:
-- Design like an iOS app is coming next
-- Use mobile-first card stack
-- Safe-area aware spacing
-- Sticky mobile header
-- Bottom navigation
-- Big touch targets
-- Camera/QR affordance
-- Upload/photo actions
-- Status chips
-- Voice/text note UI
-- App-like screen transitions if practical
-- Do not overcomplicate animations
-
-Use app labels:
-- TransPak AI Command Center
-- ScanFlow
-- Quote-to-Shop
-- Customer Portal
-
-Do not make it look like a restaurant site. It should inherit the glassy/watermark quality from the previous design direction but remain professional and industrial.
-
-================================================================================
-DATA MODEL TO CREATE
-================================================================================
-
-Create a typed demo data layer, ideally under one of these depending on the project structure:
+Create a typed demo data layer in the best project location, for example:
 - src/lib/transpak-demo-data.ts
-- app/lib/transpak-demo-data.ts
 - lib/transpak-demo-data.ts
+- app/lib/transpak-demo-data.ts
 
-Do not scatter data across components.
+Do not scatter seed data across components.
 
-Define TypeScript types for:
+Create demo utilities in:
+- src/lib/transpak-demo-utils.ts
+- src/lib/transpak-demo-state.ts
+or equivalent.
+
+Types to define:
 
 LeadExample:
 - id
@@ -460,14 +545,26 @@ ScanFlowUpdate:
 - createdBy
 - nextAction
 
+DocumentRecord:
+- id
+- jobId
+- name
+- type
+- status
+- aiExtractionSummary
+- missingFields
+- nextAction
+
 ================================================================================
-SEED REAL PUBLIC LEAD EXAMPLES
+REAL PUBLIC LEAD EXAMPLES
 ================================================================================
 
-Create 15-20 real public lead examples. These are public research examples for AI lead intelligence. Do not represent them as TransPak customers unless known.
+Create 15-20 real company examples.
 
-Each lead must clearly say:
-"Public research example — verify before outreach."
+These are public research examples, not confirmed TransPak customers or active prospects.
+
+Every lead must visibly include:
+Public research example — verify before outreach.
 
 Use a mix across:
 - Data centers
@@ -481,7 +578,7 @@ Use a mix across:
 - Lab/equipment companies
 - Manufacturers expanding facilities
 
-Seed examples can include companies such as:
+Use examples such as:
 1. Panasonic Energy — De Soto, KS — battery/EV manufacturing
 2. Rivian — Normal, IL — EV manufacturing
 3. GE HealthCare — Waukesha, WI — medical imaging equipment
@@ -491,39 +588,42 @@ Seed examples can include companies such as:
 7. Lam Research — Fremont, CA — semiconductor equipment
 8. KLA — Milpitas, CA — semiconductor process control
 9. Honeywell Aerospace — Phoenix, AZ — aerospace systems
-10. Northrop Grumman — Falls Church, VA / major US sites — defense/aerospace
+10. Northrop Grumman — major US sites — defense/aerospace
 11. Boston Dynamics — Waltham, MA — robotics
 12. Rockwell Automation — Milwaukee, WI — industrial automation
 13. Thermo Fisher Scientific — Waltham, MA — lab/scientific equipment
-14. Flexential — Charlotte, NC / US data centers — data center operations
+14. Flexential — US data centers — data center operations
 15. QTS Data Centers — Overland Park, KS / US data centers — data center operations
-16. Schneider Electric — Andover, MA / US sites — energy and automation equipment
-17. Siemens Healthineers — Malvern, PA / US sites — medical imaging/lab diagnostics
+16. Schneider Electric — US sites — energy and automation equipment
+17. Siemens Healthineers — US sites — medical imaging/lab diagnostics
 18. ABB Robotics — Auburn Hills, MI / US sites — robotics/industrial automation
 
-For each lead, include:
+For each lead:
 - website
 - category
 - industry
-- why they could plausibly need crating/packaging/design/logistics
-- a safe publicSignal such as:
-  "High-value equipment / regulated shipment fit — verify active need before outreach."
-  "Facility / equipment-heavy business profile — verify before outreach."
-  "Public company profile suggests complex equipment movement — verify before outreach."
-- suggested service fit: crating, packaging design, logistics, distribution, export packaging, kitting, document handling, customer portal
-- talking point
+- why they could plausibly need crating / packaging / design / logistics
+- safe publicSignal
+- suggested service fit
+- sales talking point
 - next action
 - confidence score 70-94
 
-Do not invent specific current expansion/hiring facts unless clearly labeled "verify before outreach."
+Do not invent specific expansion/hiring facts unless clearly labeled “verify before outreach.”
+
+Suggested safe signal phrases:
+- High-value equipment / regulated shipment fit — verify active need before outreach.
+- Equipment-heavy business profile — verify before outreach.
+- Public company profile suggests complex equipment movement — verify before outreach.
+- Multi-site or high-value operational profile — verify before outreach.
 
 ================================================================================
-SEED REALISTIC TRANSPAK-STYLE JOBS
+REALISTIC TRANSPAK-STYLE JOBS
 ================================================================================
 
 Create at least 10 realistic demo jobs.
 
-Use job IDs:
+Use these IDs:
 - TPK-1001
 - TPK-1002
 - TPK-1003
@@ -534,8 +634,6 @@ Use job IDs:
 - TPK-1008
 - TPK-1009
 - TPK-1010
-
-Job examples:
 
 TPK-1001
 Title: Custom Crate for Industrial Robot Arm
@@ -687,36 +785,24 @@ Blockers: damage report pending
 AI summary: Incoming freight exception needs documented photo proof and claim-ready summary.
 Next action: Complete inspection report and generate customer update draft.
 
-Include realistic statuses:
-- Quote intake
-- In shop review
-- Engineering review
-- Documentation review
-- Ready for pickup
-- In progress
-- Compliance hold
-- Urgent
-- Exception
-- Completed
-
 ================================================================================
-SEED ASSETS AND SHIPMENTS
+ASSETS AND SHIPMENTS
 ================================================================================
 
-Create at least 5 assets with functional QR routes:
+Create at least 5 assets:
 - FORKLIFT-04
 - CNC-01
 - PANEL-SAW-02
 - COMPRESSOR-03
 - STRAPPER-07
 
-Each asset should have:
+Each asset:
 - type
 - facility
 - location
-- current status
-- open issues
+- status
 - last service
+- open issues
 - maintenance notes
 - AI summary
 - next best action
@@ -729,7 +815,7 @@ Create at least 5 shipments:
 - SHP-2210
 - SHP-2211
 
-Each shipment should have:
+Each shipment:
 - related job id
 - carrier
 - origin
@@ -737,7 +823,7 @@ Each shipment should have:
 - ETA
 - status
 - risk level
-- missing docs
+- missing documents
 - blockers
 - AI summary
 - next best action
@@ -749,59 +835,63 @@ QR CODE REQUIREMENTS
 
 QR codes must be real and scannable.
 
-Create a QR generation utility/component:
+Create:
 - QrCodeCard
 - QrCodeGrid
 - getDemoUrl(route)
 
-Use window.location.origin on client when needed.
-Use NEXT_PUBLIC_SITE_URL if available.
-Fallback to "/" routes if not.
+Rules:
+- Use NEXT_PUBLIC_SITE_URL if available.
+- Use window.location.origin only in client-safe code.
+- Fallback to relative routes if needed.
+- Do not break SSR.
 
-The /qr page must show:
-- Header: TransPak ScanFlow QR Demo Sheet
-- Short disclaimer: "Demo QR codes route to public demo pages. Replace with approved internal URLs when connected."
+/qr must show:
+- TransPak ScanFlow QR Demo Sheet
+- Demo disclaimer
 - Job QR codes
 - Asset QR codes
 - Shipment QR codes
 - Customer portal QR codes
 - Print-friendly layout
-- Each QR card shows:
-  - QR code
-  - record ID
-  - title/name
-  - route URL
-  - status
-  - suggested scan action
 
-Scanning a QR code should open:
-- /jobs/TPK-1001 etc.
-- /assets/FORKLIFT-04 etc.
-- /shipments/SHP-2207 etc.
-- /portal/CUST-001 etc.
+Each QR card:
+- QR code image/canvas/svg
+- record ID
+- title/name
+- route URL
+- status
+- suggested scan action
 
-Every route must render a real page with relevant record data.
+Required QR routes:
+- /jobs/TPK-1001
+- /jobs/TPK-1008
+- /assets/FORKLIFT-04
+- /shipments/SHP-2207
+- /portal/CUST-001
 
 ================================================================================
-SCANFLOW MOBILE APP REQUIREMENTS
+SCANFLOW MOBILE APP
 ================================================================================
 
-Build /scanflow as a mobile-first app shell.
+Build /scanflow as mobile-first operational field software.
 
-It should feel ready for iOS:
-- fixed/sticky top app header
+It should feel like an iOS app is coming next:
+- centered phone-like max width on desktop if appropriate
+- sticky top app header
+- TransPak logo
+- ScanFlow title
+- Demo badge
 - bottom nav
-- large rounded cards
-- scan CTA
-- current assigned jobs
-- urgent queue
+- big QR scan CTA
+- assigned jobs
+- urgent blockers
 - recent scans
 - quick actions
-- offline/demo badge
-- safe area padding
-- viewport looks good inside phone-width and desktop
+- large touch targets
+- safe-area padding
 
-Bottom nav tabs:
+Bottom nav:
 - Home
 - Scan
 - Jobs
@@ -809,29 +899,47 @@ Bottom nav tabs:
 - Profile
 
 /scanflow/scanner:
-- Real camera QR scanner if stable
-- Fallback manual entry field
+- Camera QR scanner if stable
+- Fallback manual entry
 - Demo scan buttons:
-  - Scan TPK-1001
-  - Scan TPK-1008
-  - Scan FORKLIFT-04
-  - Scan SHP-2207
-- On scan success, route to the correct detail page
-- Show detected code and route preview
-- Include guidance:
-  "Scan a job, asset, shipment, or portal QR code. Demo mode also includes quick scan buttons."
+  - TPK-1001
+  - TPK-1008
+  - FORKLIFT-04
+  - SHP-2207
+- On scan, route to the correct page.
 
-Job detail mobile action area:
-On /jobs/[jobId], include a ScanFlow action panel:
-- Status selector
-- Upload photo button/input
-- Text note
-- Voice note placeholder button
-- AI summarize update button
-- Save update button
+Include scanner guidance:
+Scan a job, asset, shipment, or portal QR code. Demo mode also includes quick scan buttons.
+
+================================================================================
+JOB / ASSET / SHIPMENT DETAIL INTERACTIONS
+================================================================================
+
+/jobs/[jobId]:
+Show:
+- job summary
+- status
+- priority
+- customer/company
+- route/origin/destination
+- dimensions/weight
+- required documents
+- required photo checkpoints
+- blockers
+- AI summary
+- next best action
+- QR code
+- timeline
+- ScanFlow action panel
+
+ScanFlow action panel:
+- status selector
+- photo upload input with capture if possible
+- text note
+- voice note placeholder: “Voice note placeholder — ready for iOS speech capture.”
+- Generate AI summary
+- Save update
 - Customer update generator link
-- QR code for this job
-- Timeline
 
 Status options:
 - Ready
@@ -843,324 +951,34 @@ Status options:
 - Customer update needed
 - Completed
 
-Photo upload:
-Use an <input type="file" accept="image/*" capture="environment"> where appropriate.
-Store selected file name locally.
-No backend upload required.
-Make it feel real.
+Save update to localStorage:
+transpak-demo-updates
 
-Voice note:
-Add a button/field that says "Voice note placeholder — ready for iOS speech capture."
-If browser speech recognition is easy and safe, implement it. Otherwise keep a polished placeholder and text field.
-
-AI summarize:
-Create deterministic mock summary based on status + note + job.
-No API key.
-Example:
-"AI summary: TPK-1001 moved to Blocked because final weight confirmation is still missing. Recommended next step: request weight confirmation before final crate release."
-
-Save update:
-Store update in localStorage under something like transpak-demo-updates.
-Dashboard should read from localStorage and show recent updates where possible.
-If reading localStorage across server/client causes issues, use a client-only component.
-
-================================================================================
-COMMAND CENTER REQUIREMENTS
-================================================================================
-
-Build /command-center as a premium desktop dashboard.
-
-Header:
-- TransPak AI Command Center
-- "Demo mode: public lead examples + realistic workflow data"
-- Buttons:
-  - Open ScanFlow
-  - View QR Sheet
-  - Run Quote-to-Shop Demo
-
-Hero/stat panel:
-- New opportunities identified
-- Quote requests organized
-- Jobs active
-- Documents ready for review
-- Shipments needing attention
-- Shop blockers
-- Customer updates drafted
-- AI next-best actions
-
-Sections:
-1. Executive Command View
-2. Public Lead Intelligence
-3. Quote Intake Queue
-4. Active Jobs
-5. Documents Needing Review
-6. Shipment Risks
-7. Shop / Distribution Blockers
-8. Customer Update Drafts
-9. Recent ScanFlow Updates
-10. Next Best Actions
-
-Each section should be interactive enough to impress:
-- filter chips
-- status chips
-- route links
-- "Open job"
-- "Generate customer update"
-- "View QR"
-- "Open portal"
-- "Mark reviewed" local state if easy
-
-Do not overbuild; make it polished and functional.
-
-Use the seeded data to calculate dashboard counts:
-- leads count
-- quote count
-- urgent jobs
-- blocked jobs
-- missing docs
-- shipment risks
-- customer updates
-- recent localStorage updates
-
-Recent ScanFlow Updates:
-Show updates saved from job/asset/shipment pages.
-If none exist, show helpful demo empty state:
-"Scan a QR code or open a demo job to create the first field update."
-
-================================================================================
-QUOTE INTAKE QUEUE
-================================================================================
-
-Add quote request seed data and UI.
-
-Quote requests should show:
-- customer/company
-- service type
-- product description
-- dimensions
-- destination
-- urgency
-- uploaded files
+/assets/[assetId]:
+- asset summary
+- maintenance issue form
+- photo/note area
 - AI summary
-- missing fields
-- risk flags
-- suggested next step
-- approval status
-
-Actions:
-- Approve intake
-- Create job
-- Request missing info
-- Open demo flow
-
-These can be local buttons. They do not need backend persistence, but should visibly change local UI state if possible.
-
-================================================================================
-AI LEAD INTELLIGENCE
-================================================================================
-
-Add a lead intelligence panel/page section.
-
-Each lead card should show:
-- company name
-- industry/category
-- city/state
-- website link
-- public research label
-- why TransPak fit
-- suggested services
-- sales talking point
 - next action
-- confidence score
-- status
+- QR code
+- save update to localStorage
 
-Important disclaimer:
-"Public research examples for AI lead intelligence. These are not represented as TransPak customers and should be verified before outreach."
-
-Add filters:
-- Data centers
-- Aerospace
-- Medical
-- Semiconductor
-- Industrial
-- Robotics
-- Battery/EV
-- Defense
-- Lab equipment
+/shipments/[shipmentId]:
+- shipment summary
+- risk level
+- ETA
+- missing docs
+- blockers
+- update status/note
+- AI summary
+- QR code
+- save update to localStorage
 
 ================================================================================
-DOCUMENT REVIEW HUB
+LOCAL DEMO STATE
 ================================================================================
 
-Build a document review panel or page section in /command-center.
-
-Use demo documents attached to jobs:
-- BOL
-- packing list
-- certificate
-- invoice
-- inspection photos
-- customs checklist
-- insurance file
-
-Show:
-- document name
-- related job
-- status: ready, missing, needs review, approved
-- AI extraction summary
-- missing fields
-- next action
-
-Do not need real PDF parsing. Use seeded docs and AI summaries.
-Make it look like it could later connect to OCR/extraction.
-
-================================================================================
-CUSTOMER UPDATE GENERATOR
-================================================================================
-
-Build /customer-updates/[jobId].
-
-It should:
-- Load job data
-- Show internal status
-- Show blockers
-- Show photos/checkpoints
-- Show documents
-- Generate customer-ready update draft
-- Require human approval visually
-- Include buttons:
-  - Copy update
-  - Mark approved
-  - Open customer portal
-  - Back to Command Center
-
-Draft tone:
-Professional, customer-ready, clear, not overexplaining internal details.
-
-Example:
-"Your packaging job is currently in shop review. The team has completed initial inspection and is waiting on final weight confirmation before final crate release. The next update will be sent after the final checkpoint photos are reviewed."
-
-Do not send email. Copy only.
-
-================================================================================
-READ-ONLY CUSTOMER PORTAL
-================================================================================
-
-Build /portal/[customerId].
-
-It should be customer-facing and read-only.
-
-Show:
-- TransPak logo
-- customer/company name
-- quote/job statuses
-- shipment status
-- photos/checkpoints
-- documents
-- latest update
-- assigned contact
-- open issues
-- secure-demo badge
-
-Make it feel safe:
-"Read-only demo portal. In production, access would be permissioned and connected to approved customer records."
-
-================================================================================
-QUOTE-TO-SHOP GUIDED DEMO
-================================================================================
-
-Build /demo/quote-to-shop.
-
-This page should be the sales weapon.
-
-Use a vertical stepper or horizontal guided experience:
-
-Step 1: Quote request arrives
-- Show inbound quote form data with files/photos/dimensions.
-
-Step 2: AI structures intake
-- Show summary, missing fields, risk flags, suggested service type.
-
-Step 3: Estimator review
-- Show human approval, assign to sales/design/shop/logistics.
-
-Step 4: Job + QR created
-- Show generated job ID and real QR code.
-
-Step 5: ScanFlow field update
-- Show phone mockup or link to /jobs/TPK-1001.
-- Show upload photo / status / note action.
-
-Step 6: Customer update draft
-- Show generated update with human approval.
-
-Step 7: Executive dashboard updates
-- Show mini dashboard stats and next-best action.
-
-Add a top note:
-"This is a demo workflow using realistic TransPak-style data. The same pattern can be connected to approved internal systems later."
-
-Add buttons:
-- Open job QR
-- Open ScanFlow
-- Generate customer update
-- View command center
-
-This flow should be beautiful and extremely clear.
-
-================================================================================
-APP-READY / IOS-READY MESSAGING
-================================================================================
-
-Add this message where it fits:
-- homepage/pitch page
-- command center
-- planning comparison right side if not already
-- final CTA
-
-Message:
-"Once a workflow proves useful, it does not have to stay as a dashboard or prompt. It can become an internal web app, iOS or Android field tool, customer portal, QR scan workflow, shop-floor checklist, logistics board, or leadership command view."
-
-Also:
-"The first version can run as a web app or mobile PWA. If the workflow proves value, the same system can become a dedicated iOS or Android app."
-
-Make the interface visually ready for iOS:
-- mobile routes should already feel like app screens
-- make touch targets large
-- include iOS-safe spacing
-- use bottom nav
-- use camera/photo-oriented UI
-
-================================================================================
-PWA READINESS
-================================================================================
-
-If the project does not already have PWA basics, add lightweight PWA readiness without breaking the build:
-- manifest.json or metadata manifest if appropriate
-- theme color
-- apple-mobile-web-app-capable meta if the current framework supports it
-- app icons only if assets exist; otherwise do not overcomplicate
-- short name: TransPak AI
-- name: TransPak AI Command Center
-- display: standalone
-- start_url: /command-center
-
-Do not spend too much time on service workers unless the project already has them. PWA-ready visual and manifest is enough for this run.
-
-================================================================================
-STATE / DEMO INTERACTION
-================================================================================
-
-Create client-safe localStorage utilities for demo state:
-- updates
-- approved customer updates
-- quote approval actions
-- reviewed documents
-
-Do not make server components read localStorage.
-Use "use client" components for localStorage sections.
-
-Create utility functions:
+Create client-safe localStorage utilities:
 - getDemoUpdates()
 - saveDemoUpdate()
 - clearDemoUpdates()
@@ -1172,176 +990,253 @@ Create utility functions:
 - getLeadById()
 - getCustomerPortalById()
 
-If the project prefers hooks, create:
-- useDemoUpdates()
-- useLocalDemoState()
+Do not read localStorage in server components.
+Use client components/hooks for localStorage display.
 
-Make sure build passes.
-
-================================================================================
-HOMEPAGE / PITCH PAGE INTEGRATION
-================================================================================
-
-On the existing TransPak pitch page:
-- Add a high-value section or CTA that launches the demo app.
-- Do not clutter the pitch.
-- Add buttons:
-  - Launch AI Command Center
-  - Open ScanFlow Mobile Demo
-  - Print QR Demo Sheet
-  - Watch Quote-to-Shop Demo
-
-Add a small app-ready line:
-"Every workflow shown here can start as a small AI layer and grow into a web app, mobile field tool, iOS/Android app, customer portal, or leadership command view after value is proven."
-
-Make sure the nav still works.
+Recent ScanFlow Updates on root should read from localStorage.
+If no updates:
+Scan a QR code or open a demo job to create the first field update.
 
 ================================================================================
-PAGE-SPECIFIC DESIGN GUIDANCE
+CUSTOMER UPDATE GENERATOR
 ================================================================================
 
-/command-center:
-- dark command panel moments
-- white/glass dashboard cards
-- left summary column, main center feed, right next-actions column if screen allows
-- responsive to tablet/mobile
+/customer-updates/[jobId] must:
+- load job data
+- show internal status
+- show blockers
+- show photo/doc checklist
+- generate a customer-ready update draft
+- keep human approval visually in the loop
+- include Copy update
+- Mark approved
+- Open customer portal
+- Back to Command Center
 
-/scanflow:
-- mobile app shell
-- if opened on desktop, center in a phone frame or use max-width around 430px
-- sticky app header
-- bottom nav
-- big "Scan QR" CTA
-- active jobs list
-- urgent blockers
-- recent updates
+Do not send email.
 
-/jobs/[jobId]:
-- desktop and mobile friendly
-- job hero summary
-- QR code card
-- status and blocker chips
-- required document checklist
-- required photo checklist
-- ScanFlow action panel
-- timeline
-- customer update generator CTA
+Draft tone:
+professional, clear, customer-safe, not too internal.
 
-/assets/[assetId]:
-- asset hero
-- maintenance log
-- issue form
-- QR code
-- AI summary
-- next best action
-- save local update
+================================================================================
+READ-ONLY CUSTOMER PORTAL
+================================================================================
 
-/shipments/[shipmentId]:
-- shipment hero
-- route/status
-- missing docs
-- risk level
-- staging update
-- AI summary
-- QR code
-- save local update
+/portal/[customerId] should be customer-facing and read-only.
 
-/customer-updates/[jobId]:
-- customer-ready update draft
-- job facts
+Show:
+- TransPak logo
+- customer/company name
+- job status
+- shipment status
+- photos/checkpoints
+- documents
+- latest update
+- assigned contact
+- open issues in customer-safe language
+- secure demo badge
+
+Include:
+Read-only demo portal. In production, access would be permissioned and connected to approved customer records.
+
+================================================================================
+QUOTE-TO-SHOP DEMO
+================================================================================
+
+/demo/quote-to-shop should be an operational walkthrough, not a pitch page.
+
+Use a compact stepper/workflow view.
+
+Steps:
+1. Quote request arrives
+2. AI structures intake
+3. Estimator reviews and approves
+4. Job + QR created
+5. ScanFlow field update
+6. Customer update drafted
+7. Command Center updates
+
+Show real seeded data from TPK-1001 or quote request.
+Use real QR code.
+Include links:
+- Open job
+- Open ScanFlow
+- Generate customer update
+- View Command Center
+
+No marketing hero. No proposal copy.
+
+================================================================================
+COMMAND CENTER CONTENT SECTIONS
+================================================================================
+
+Root Command Center must include:
+
+1. Quote Intake Queue
+Rows:
+- quote ID
+- company
+- service type
+- urgency
+- missing fields
+- suggested next step
+- action buttons
+
+2. Active Jobs
+Rows:
+- job ID
+- company
+- title
+- status
+- priority
+- owner
+- due date
 - blockers
-- photo/doc checklist
-- copy/approve buttons
-- portal link
+- action buttons
 
-/portal/[customerId]:
-- read-only customer view
-- clean, trust-focused
-- no internal risk details beyond customer-safe language
+3. Public Lead Intelligence
+Rows/cards:
+- company
+- industry
+- city/state
+- fit reason
+- confidence
+- next action
+- verify-before-outreach label
 
-/qr:
-- print-friendly QR sheet
-- grid cards
-- scannable
-- route text visible
-- demo disclaimer
+4. Document Review Hub
+Rows:
+- document
+- related job
+- status
+- missing fields
+- extraction summary
+- action
 
-/demo/quote-to-shop:
-- guided stepper
-- show how one workflow moves through the entire system
-- must be visually impressive
+5. Shipment Risk Monitor
+Rows:
+- shipment ID
+- related job
+- status
+- risk level
+- missing docs
+- next action
+
+6. Shop Blockers
+Rows:
+- job
+- blocker
+- department
+- owner
+- next action
+
+7. Customer Update Drafts
+Rows:
+- job
+- company
+- update status
+- action: Generate update
+
+8. Recent ScanFlow Updates
+Rows from localStorage or demo empty state.
+
+9. Next Best Actions
+Prioritized list.
 
 ================================================================================
-CONTENT / COPY TO INCLUDE
+HONEST POSITIONING COPY
 ================================================================================
 
-Include these exact or lightly refined lines:
+Include these exact or lightly refined lines in appropriate operational places:
 
-"This demo uses real public lead examples, realistic TransPak-style job records, and functional QR codes to show how the system would work once connected to approved internal data."
+This demo uses real public lead examples, realistic TransPak-style job records, and functional QR codes to show how the system would work once connected to approved internal data.
 
-"Public research examples for AI lead intelligence. These are not represented as TransPak customers and should be verified before outreach."
+Public research examples for AI lead intelligence. These are not represented as TransPak customers and should be verified before outreach.
 
-"The first version can run as a web app or mobile PWA. If the workflow proves value, the same system can become a dedicated iOS or Android app."
+The first version can run as a web app or mobile PWA. If the workflow proves value, the same system can become a dedicated iOS or Android app.
 
-"Scan a QR code → open the job → upload a photo → select a status → add a note → generate an AI summary → update the command center → draft a customer-ready update."
+Scan a QR code → open the job → upload a photo → select a status → add a note → generate an AI summary → update the command center → draft a customer-ready update.
 
-"Human approval stays in the loop."
+Human approval stays in the loop.
 
-"Start with one workflow. Prove value. Build from there."
+Start with one workflow. Prove value. Build from there.
+
+Use these as small app notes, demo badges, tooltips, or compact info bars. Do not turn them into a marketing homepage.
 
 ================================================================================
-NO PLACEHOLDER / NO EMPTY DEMO RULE
+PWA READINESS
 ================================================================================
 
-Do not leave routes empty.
-Do not create TODO-only pages.
-Do not leave broken buttons.
-Do not create dead nav links.
-Do not show empty dashboards unless there is a meaningful empty state and a demo action.
-Do not require backend setup.
-Do not require API keys.
-Do not hide the QR feature behind future work.
-Do not make the QR sheet fake. The generated QR codes must point to live demo routes.
+Add lightweight PWA readiness if not already present:
+- manifest
+- theme color
+- apple mobile capable metadata if framework supports it
+- short name: TransPak AI
+- name: TransPak AI Command Center
+- display: standalone
+- start_url: /
 
-If something cannot be implemented fully due to build constraints, implement the best stable demo version and clearly comment why. But the visible user-facing demo must feel complete.
+Do not overbuild service workers unless already present.
+
+================================================================================
+NO PLACEHOLDER / NO BROKEN DEMO RULE
+================================================================================
+
+Do not leave:
+- empty pages
+- broken buttons
+- TODO-only sections
+- dead nav links
+- fake QR images
+- API key requirements
+- database requirements
+- production crashes
+
+If camera scanning is unstable, keep real QR generation and use manual/demo scan fallback.
+
+The visible demo must feel complete.
 
 ================================================================================
 BUILD AND VALIDATION
 ================================================================================
 
-After implementation:
-1. Run npm install only if needed.
-2. Run npm run lint if available.
-3. Run npm run build if available.
-4. Fix all errors.
-5. Verify these routes render:
-   - /
-   - /command-center
-   - /scanflow
-   - /scanflow/scanner
-   - /qr
-   - /demo/quote-to-shop
-   - /jobs/TPK-1001
-   - /jobs/TPK-1008
-   - /assets/FORKLIFT-04
-   - /shipments/SHP-2207
-   - /customer-updates/TPK-1001
-   - /portal/CUST-001
+Run:
+- npm install only if needed
+- npm run lint if available
+- npm run build if available
 
-6. Verify QR codes point to those routes.
-7. Verify mobile layout of /scanflow and /jobs/[jobId].
-8. Verify no TypeScript errors.
-9. Verify no SSR localStorage/window errors.
-10. Verify all navigation buttons work.
-11. Verify TransPak logos from /Users/kyle/Desktop/transpak/transpakdemo/logos are used correctly.
-12. Verify the project is committed locally.
-13. Verify GitHub repo kbmillard/transpakdemo is created/pushed if auth allows.
+Fix all errors.
+
+Verify these routes render:
+- /
+- /command-center
+- /scanflow
+- /scanflow/scanner
+- /qr
+- /demo/quote-to-shop
+- /jobs/TPK-1001
+- /jobs/TPK-1008
+- /assets/FORKLIFT-04
+- /shipments/SHP-2207
+- /customer-updates/TPK-1001
+- /portal/CUST-001
+
+Verify:
+- `/` is the operational dashboard, not a proposal page.
+- `/command-center` works or redirects safely.
+- QR codes point to live routes.
+- mobile layout works.
+- localStorage does not break SSR.
+- TransPak logos from /Users/kyle/Desktop/transpak/transpakdemo/logos are used.
+- no proposal/pitch page appears in the root flow.
 
 ================================================================================
 EXPECTED FILES / STRUCTURE
 ================================================================================
 
-Adapt to the project, but likely create or update files similar to:
+Adapt to the actual project. Do not force a structure that does not fit.
+
+Likely files:
 
 Data:
 - src/lib/transpak-demo-data.ts
@@ -1349,6 +1244,7 @@ Data:
 - src/lib/transpak-demo-state.ts
 
 Components:
+- src/components/transpak/AppShell.tsx
 - src/components/transpak/CommandCenter.tsx
 - src/components/transpak/ScanFlowShell.tsx
 - src/components/transpak/QrCodeCard.tsx
@@ -1362,8 +1258,10 @@ Components:
 - src/components/transpak/DemoBadge.tsx
 - src/components/transpak/StatusChip.tsx
 - src/components/transpak/MobileBottomNav.tsx
+- src/components/transpak/DataTable.tsx
 
 Routes:
+- src/app/page.tsx
 - src/app/command-center/page.tsx
 - src/app/scanflow/page.tsx
 - src/app/scanflow/scanner/page.tsx
@@ -1376,33 +1274,33 @@ Routes:
 - src/app/demo/quote-to-shop/page.tsx
 
 Docs:
-- DEMO_FLOW.md or src/app/demo-flow.md if project convention fits
-
-Only use this structure if it fits the current project. Do not force src/ if the project does not use src/.
+- DEMO_FLOW.md
 
 ================================================================================
 DEMO_FLOW.md
 ================================================================================
 
-Create a short DEMO_FLOW.md at the project root with:
+Create DEMO_FLOW.md at the project root.
 
 Title:
 TransPak AI Command Center Demo Flow
 
 Include:
-1. Open /command-center
-2. Review public lead intelligence
-3. Open quote intake queue
-4. Open /qr
-5. Scan TPK-1001 or click the link
-6. On /jobs/TPK-1001, change status, add note/photo, generate AI summary
-7. Open /customer-updates/TPK-1001
-8. Copy/approve customer-ready update
-9. Open /portal/CUST-001
-10. Return to /command-center to see recent ScanFlow update
-11. Open /demo/quote-to-shop for guided walkthrough
+1. Open /
+2. Review KPI strip and Next Best Actions
+3. Review Public Lead Intelligence
+4. Open Quote Intake Queue
+5. Open /qr
+6. Scan or click TPK-1001
+7. On /jobs/TPK-1001, change status, add note/photo, generate AI summary, save update
+8. Open /customer-updates/TPK-1001
+9. Copy/approve customer-ready update
+10. Open /portal/CUST-001
+11. Return to / to see recent ScanFlow update
+12. Open /demo/quote-to-shop for guided workflow
 
-Add honest positioning/disclaimer.
+Add honest positioning:
+Demo uses public lead examples and realistic job data until connected to approved internal systems.
 
 ================================================================================
 FINAL RESPONSE FROM CURSOR
@@ -1410,14 +1308,17 @@ FINAL RESPONSE FROM CURSOR
 
 When finished, return:
 - Summary of what was built
-- GitHub repo status: created/pushed or local-only with commands to push
-- Logo assets used from /Users/kyle/Desktop/transpak/transpakdemo/logos
+- Confirmation that `/` is now the operational Command Center
+- Confirmation that proposal/pitch homepage content is removed from root
+- What was done with any old proposal content
+- GitHub repo status
+- Logo assets used
 - Files changed
-- Routes added
+- Routes added/verified
 - Commands run
-- Any dependency installed
+- Dependencies installed
 - Build/lint result
 - How to demo it in 5 steps
-- Anything that could not be completed, if any
+- Anything that could not be completed
 
 Do not return until the project builds or you have made the strongest possible safe fix.

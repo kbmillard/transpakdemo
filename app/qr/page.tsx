@@ -22,8 +22,8 @@ export default function QrDemoSheetPage() {
               <p className="text-lg font-bold">QR Demo Sheet</p>
             </div>
           </div>
-          <Link href="/command-center" className="text-sm font-semibold text-[#D80B3C] print:hidden">
-            ← Command Center
+          <Link href="/" className="text-sm font-semibold text-[#D80B3C] print:hidden">
+            ← Home
           </Link>
         </div>
       </header>

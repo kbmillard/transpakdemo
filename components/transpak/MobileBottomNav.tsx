@@ -8,7 +8,7 @@ const items = [
   { href: "/scanflow", label: "Home", icon: Home },
   { href: "/scanflow/scanner", label: "Scan", icon: ScanLine },
   { href: "/scanflow/jobs", label: "Jobs", icon: Briefcase },
-  { href: "/command-center", label: "Updates", icon: LineChart },
+  { href: "/", label: "Updates", icon: LineChart },
   { href: "/scanflow/profile", label: "Profile", icon: User },
 ] as const;
 

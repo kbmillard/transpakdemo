@@ -14,9 +14,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "TransPak AI Strategy Overview | Recyclic Bravery",
+  title: "TransPak AI Command Center",
   description:
-    "Executive overview of how AI can support sales, operations, logistics, and customer experience at TransPak — plus an interactive TransPak AI Command Center demo.",
+    "Operational demo workspace — public-fit leads, quote intake, jobs, shipments, documents, ScanFlow field updates, and customer-ready drafts.",
   applicationName: "TransPak AI Command Center",
   icons: {
     icon: "/favicon.ico",

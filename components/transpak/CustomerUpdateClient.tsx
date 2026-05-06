@@ -48,8 +48,8 @@ export function CustomerUpdateClient({ job }: CustomerUpdateClientProps) {
         <Link href={job.customerPortalRoute} className="rounded-full bg-[#D80B3C] px-4 py-2 text-xs font-semibold text-white">
           Open customer portal
         </Link>
-        <Link href="/command-center" className="rounded-full border border-[#19212A]/15 px-4 py-2 text-xs font-semibold">
-          Back to Command Center
+        <Link href="/" className="rounded-full border border-[#19212A]/15 px-4 py-2 text-xs font-semibold">
+          Back to home
         </Link>
       </div>
     </div>

@@ -221,7 +221,7 @@ export function TransPakAIOverview() {
               </div>
               <div className="mt-6 flex flex-wrap gap-3">
                 <Link
-                  href="/command-center"
+                  href="/"
                   className="inline-flex items-center gap-2 rounded-full bg-[#D80B3C] px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-[#D80B3C]/25 transition hover:brightness-110"
                 >
                   <LayoutDashboard className="h-4 w-4" aria-hidden />
@@ -342,7 +342,7 @@ export function TransPakAIOverview() {
                       updates — all demo-safe and local-first.
                     </p>
                     <Link
-                      href="/command-center"
+                      href="/"
                       className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-[#D80B3C] hover:underline"
                     >
                       Launch Command Center

@@ -1,5 +1,5 @@
-import { TransPakAIOverview } from "@/components/transpak-ai/TransPakAIOverview";
+import { CommandCenterView } from "@/components/transpak/CommandCenterView";
 
 export default function Home() {
-  return <TransPakAIOverview />;
+  return <CommandCenterView />;
 }
