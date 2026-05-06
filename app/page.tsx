@@ -1,5 +1,5 @@
-import { CommandCenterView } from "@/components/transpak/CommandCenterView";
+import { CommandCenterEntry } from "@/components/transpak/CommandCenterEntry";
 
 export default function Home() {
-  return <CommandCenterView />;
+  return <CommandCenterEntry />;
 }
